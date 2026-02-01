@@ -29,7 +29,7 @@ const ProductCategories = () => {
     },
     {
       name: 'Temple & Mandirs',
-      image: 'https://images.pexels.com/photos/6186806/pexels-photo-6186806.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&w=400',
       productCount: '80+ Models',
       description: 'Traditional & modern pooja units'
     },

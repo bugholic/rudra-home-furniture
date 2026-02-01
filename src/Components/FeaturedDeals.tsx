@@ -1,176 +1,118 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, MessageCircle, FileText } from 'lucide-react';
+import { Tag, Clock, TrendingUp } from 'lucide-react';
 
-const Contact = () => {
+const FeaturedDeals = () => {
+  const deals = [
+    {
+      title: 'Bedroom Furniture Bundle',
+      originalPrice: '₹45,000',
+      salePrice: '₹28,000',
+      discount: '38% OFF',
+      image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=500',
+      description: 'King size bed + 2 side tables + wardrobe',
+      minOrder: 'Minimum 10 sets',
+      timeLeft: '3 days left'
+    },
+    {
+      title: 'Office Chair Bulk Pack',
+      originalPrice: '₹8,500',
+      salePrice: '₹5,200',
+      discount: '40% OFF',
+      image: 'https://images.pexels.com/photos/2041627/pexels-photo-2041627.jpeg?auto=compress&cs=tinysrgb&w=500',
+      description: 'Ergonomic office chairs - Pack of 20',
+      minOrder: 'Minimum 20 pieces',
+      timeLeft: '5 days left'
+    },
+    {
+      title: 'Sofa Set Mega Deal',
+      originalPrice: '₹35,000',
+      salePrice: '₹22,000',
+      discount: '35% OFF',
+      image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=500',
+      description: '5-seater sofa set with premium fabric',
+      minOrder: 'Minimum 5 sets',
+      timeLeft: '1 week left'
+    },
+    {
+      title: 'Kitchen Appliance Combo',
+      originalPrice: '₹25,000',
+      salePrice: '₹18,500',
+      discount: '26% OFF',
+      image: 'https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=500',
+      description: 'Microwave + OTG + Mixer Grinder combo',
+      minOrder: 'Minimum 15 combos',
+      timeLeft: '2 weeks left'
+    }
+  ];
+
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gray-50">
+    <section id="deals" className="py-16 md:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Get In Touch
+            Featured Wholesale Deals
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to start your wholesale journey? Contact our business development team
+            Exclusive bulk pricing for businesses. Save more when you buy more!
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">Contact Information</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-blue-800 p-3 rounded-lg">
-                  <Phone className="h-6 w-6 text-white" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {deals.map((deal, index) => (
+            <div 
+              key={index}
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+            >
+              <div className="md:flex">
+                <div className="md:w-1/2 relative">
+                  <img 
+                    src={deal.image}
+                    alt={deal.title}
+                    className="w-full h-48 md:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    {deal.discount}
+                  </div>
+                  <div className="absolute bottom-4 left-4 bg-black bg-opacity-70 text-white px-3 py-1 rounded flex items-center text-sm">
+                    <Clock className="h-3 w-3 mr-1" />
+                    {deal.timeLeft}
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Phone Numbers</h4>
-                  <p className="text-gray-600">Sales: +91 98765 43210</p>
-                  <p className="text-gray-600">Support: +91 98765 43211</p>
-                </div>
-              </div>
+                <div className="md:w-1/2 p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{deal.title}</h3>
+                  <p className="text-gray-600 mb-4">{deal.description}</p>
+                  
+                  <div className="flex items-center mb-4">
+                    <span className="text-2xl font-bold text-green-600">{deal.salePrice}</span>
+                    <span className="text-lg text-gray-500 line-through ml-2">{deal.originalPrice}</span>
+                  </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-blue-800 p-3 rounded-lg">
-                  <Mail className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Email Addresses</h4>
-                  <p className="text-gray-600">sales@rudrahomefurniture.com</p>
-                  <p className="text-gray-600">support@rudrahomefurniture.com</p>
-                </div>
-              </div>
+                  <div className="bg-blue-50 p-3 rounded-lg mb-4">
+                    <div className="flex items-center text-blue-800 text-sm font-semibold mb-1">
+                      <Tag className="h-4 w-4 mr-1" />
+                      Bulk Pricing
+                    </div>
+                    <p className="text-blue-700 text-sm">{deal.minOrder}</p>
+                  </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-blue-800 p-3 rounded-lg">
-                  <MapPin className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Head Office</h4>
-                  <p className="text-gray-600">123 Furniture Street, Industrial Area,<br />New Delhi - 110025, India</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-blue-800 p-3 rounded-lg">
-                  <Clock className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Business Hours</h4>
-                  <p className="text-gray-600">Monday - Saturday: 9:00 AM - 7:00 PM</p>
-                  <p className="text-gray-600">Sunday: 10:00 AM - 5:00 PM</p>
+                  <button className="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 transition-colors font-semibold flex items-center justify-center">
+                    <TrendingUp className="h-4 w-4 mr-2" />
+                    Get Quote Now
+                  </button>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Quick Actions */}
-            <div className="mt-8 space-y-4">
-              <h4 className="font-semibold text-gray-900 mb-4">Quick Actions</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <button className="flex items-center justify-center space-x-2 bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 transition-colors">
-                  <MessageCircle className="h-4 w-4" />
-                  <span>WhatsApp</span>
-                </button>
-                <button className="flex items-center justify-center space-x-2 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors">
-                  <Phone className="h-4 w-4" />
-                  <span>Call Now</span>
-                </button>
-                <button className="flex items-center justify-center space-x-2 bg-orange-500 text-white py-3 px-4 rounded-lg hover:bg-orange-600 transition-colors">
-                  <FileText className="h-4 w-4" />
-                  <span>Catalog</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Request Quote</h3>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Name *
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Your business name"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input 
-                    type="tel" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="+91 98765 43210"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Product Category
-                </label>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                  <option>Select Category</option>
-                  <option>Beds & Mattresses</option>
-                  <option>Sofas & Seating</option>
-                  <option>Dining & Chairs</option>
-                  <option>Wardrobes & Storage</option>
-                  <option>Temple & Mandirs</option>
-                  <option>Washing Machines</option>
-                  <option>Kitchen Appliances</option>
-                  <option>Office Furniture</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea 
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Tell us about your requirements, quantity needed, etc."
-                ></textarea>
-              </div>
-
-              <button className="w-full bg-blue-800 text-white py-4 rounded-lg hover:bg-blue-900 transition-colors text-lg font-semibold">
-                Submit Quote Request
-              </button>
-            </form>
-          </div>
+        <div className="text-center mt-12">
+          <button className="bg-blue-800 text-white px-8 py-4 rounded-lg hover:bg-blue-900 transition-colors text-lg font-semibold">
+            View All Deals
+          </button>
         </div>
       </div>
     </section>
   );
 };
 
-export default Contact;
+export default FeaturedDeals;

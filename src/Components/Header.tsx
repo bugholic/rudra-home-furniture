@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Phone, Mail, ShoppingCart } from 'lucide-react';
+import { Menu, X, Phone, Mail, ShoppingCart, User, Heart } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,14 +80,36 @@ const Header = () => {
             <a href="#deals" className="text-gray-700 hover:text-blue-800 font-medium transition-colors">Deals</a>
             <a href="#testimonials" className="text-gray-700 hover:text-blue-800 font-medium transition-colors">Reviews</a>
             <a href="#contact" className="text-gray-700 hover:text-blue-800 font-medium transition-colors">Contact</a>
-            <button className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2">
-              <ShoppingCart className="h-4 w-4" />
-              <span>Get Quote</span>
-            </button>
+            
+            {/* User Actions */}
+            <div className="flex items-center space-x-4">
+              <button className="text-gray-700 hover:text-blue-800 transition-colors relative">
+                <Heart className="h-5 w-5" />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+              </button>
+              
+              <button className="text-gray-700 hover:text-blue-800 transition-colors relative">
+                <ShoppingCart className="h-5 w-5" />
+                <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">5</span>
+              </button>
+              
+              <button className="text-gray-700 hover:text-blue-800 transition-colors">
+                <User className="h-5 w-5" />
+              </button>
+              
+              <button className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2">
+                <span>Get Quote</span>
+              </button>
+            </div>
           </nav>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-3">
+            <button className="text-gray-700 hover:text-blue-800 transition-colors relative">
+              <ShoppingCart className="h-4 w-4" />
+              <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">5</span>
+            </button>
+            
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 hover:text-blue-800"
@@ -106,8 +128,19 @@ const Header = () => {
               <a href="#deals" className="text-gray-700 hover:text-blue-800 font-medium">Deals</a>
               <a href="#testimonials" className="text-gray-700 hover:text-blue-800 font-medium">Reviews</a>
               <a href="#contact" className="text-gray-700 hover:text-blue-800 font-medium">Contact</a>
+              
+              <div className="flex items-center space-x-4 pt-4 border-t border-gray-200">
+                <button className="flex items-center space-x-2 text-gray-700 hover:text-blue-800 font-medium">
+                  <Heart className="h-4 w-4" />
+                  <span>Wishlist (3)</span>
+                </button>
+                <button className="flex items-center space-x-2 text-gray-700 hover:text-blue-800 font-medium">
+                  <User className="h-4 w-4" />
+                  <span>Profile</span>
+                </button>
+              </div>
+              
               <button className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2 w-fit">
-                <ShoppingCart className="h-4 w-4" />
                 <span>Get Quote</span>
               </button>
             </nav>
